@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      
+      #navbar {
+    display: flex;
+    justify-content: flex-end;
+    background-color: rgb(252, 252, 252);
+    padding: 30px;
+    color: black;
+    border: solid 2px black;
+    gap: 50px;
+}
+
+      a {
+        text-decoration: none;
+      }
+      #navbar a:hover {
+        color: rgb(0, 0, 0);
+      }
+      #navbar a {
+        cursor: pointer;
+      }
+      /* div form {padding: 30px;} */
+      input#user {
+    padding: 10px;
+    background-color: aliceblue;
+    border: 1px solid red;
+    border-radius: 8px;
+}
+input#email{
+  padding: 10px;
+    background-color: aliceblue;
+    border: 1px solid red;
+    border-radius: 8px;
+}
+input#pass{
+  padding: 10px;
+    background-color: aliceblue;
+    border: 1px solid red;
+    border-radius: 8px;
+}
+
+.container {
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    width: 20%;
+    padding: 40px;
+    margin: auto;
+    border-radius: 30px
+}
+/* #fild {
+    margin: 10px;
+} */
+#pass {
+    margin: 10px;
+}
+#email {
+    margin: 10px;
+}
+input[type="submit"] {
+  width: 93%;
+    background-color: aliceblue;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid red;
+    /* font-size: 15px; */
+    font-weight: 700;
+    margin-left: 9px;
+    margin-top: 14px;
+}
+    </style>
+  </head>
+  <body>
+    <div id="navbar">     
+      <div><a href="index.html">HOME</a></div> 
+      <div><a href="sinup.html">SIGNUP</a></div>
+      <div><a href="login.html">LOGIN</a></div>
+    </div>
+    <div class="container">
+      
+      <h1>Login Here</h1>
+      <form>
+        <input id="email" type="text" placeholder="Enter email" />
+        <input id="pass" type="password" placeholder="Enter password" />
+        <input type="submit" />
+      </form>
+    </div>
+    
+  </body>
+</html>
+
+<script>
+  document.querySelector("form").addEventListener("submit", loginFun);
+  var regdUsers = JSON.parse(localStorage.getItem("userCreds"));
+  //console.log(regdUsers);
+
+  function loginFun() {
+    event.preventDefault();
+    var enteredEmail = document.querySelector("#email").value;
+    var enteredPass = document.querySelector("#pass").value;
+    //console.log(email, pass);
+
+    for (var i = 0; i < regdUsers.length; i++) {
+      console.log(regdUsers[i]);
+      if (
+        regdUsers[i].email == enteredEmail &&
+        regdUsers[i].password == enteredPass
+      ) {
+        alert("login success");
+        window.location.href = "index.html";
+        break;
+      } else {
+        console.log("login failed");
+      }
+    }
+    
+  }
+</script>
